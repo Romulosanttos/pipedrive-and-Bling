@@ -1,0 +1,34 @@
+version: "3.5"
+services:
+  api_base:
+    container_name: api
+    image: api_base:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/home/app/
+    command: npm run dev
+    links:
+      - mongodb:mongo
+    networks:
+      webproxy:
+          ipv4_address: 192.168.2.2
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    hostname: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    networks:
+      webproxy:
+          ipv4_address: 192.168.2.3
+
+networks:
+  webproxy:
+    name: api_webproxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.2.0/24
