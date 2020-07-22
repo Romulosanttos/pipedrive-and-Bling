@@ -1,4 +1,3 @@
-
 import Mongo from './mongo/mongoConnect';
 
 class StartDbs {

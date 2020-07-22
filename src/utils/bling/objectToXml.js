@@ -1,6 +1,5 @@
 import Parser from 'xml2js';
 
-
 export default class sasd {
   constructor(data) {
     this.data = data;

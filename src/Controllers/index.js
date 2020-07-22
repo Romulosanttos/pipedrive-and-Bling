@@ -1,4 +1,3 @@
-
 import baseInicial from './base/inicial';
 import salesOrders from './salesOrders/index';
 

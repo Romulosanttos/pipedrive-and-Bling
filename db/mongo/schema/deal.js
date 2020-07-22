@@ -88,5 +88,4 @@ class Schema {
   }
 }
 
-
 export default async (db) => new Schema(db).exist();
